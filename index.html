@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="Sawan Kumar — Computer Science & Data Science student, builder, AI enthusiast and hackathon finalist." />
+  <title>Sawan Kumar</title>
+  <style>
+    :root{
+      --bg:#07070a;--surface:#101116;--surface2:#15161d;--text:#f7f7fb;--muted:#a4a7b3;
+      --line:rgba(255,255,255,.09);--accent:#8b5cf6;--accent2:#22d3ee;--glow:rgba(139,92,246,.28);
+      --max:1180px;--radius:24px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+      radial-gradient(circle at 15% 10%,rgba(139,92,246,.16),transparent 30%),
+      radial-gradient(circle at 85% 20%,rgba(34,211,238,.10),transparent 28%),var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{position:fixed;z-index:50;top:18px;left:50%;transform:translateX(-50%);width:min(1080px,calc(100% - 28px));
+      display:flex;align-items:center;justify-content:space-between;padding:11px 14px 11px 18px;
+      background:rgba(13,13,17,.72);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);box-shadow:0 14px 40px rgba(0,0,0,.25)}
+    .logo{font-weight:900;letter-spacing:-.7px}.logo span{color:#a78bfa}
+    .navlinks{display:flex;gap:7px}.navlinks a{font-size:13px;color:#b9bbc5;padding:9px 11px;border-radius:11px;transition:.2s}
+    .navlinks a:hover{background:rgba(255,255,255,.07);color:#fff}
+    .menu{display:none;background:none;border:0;color:#fff;font-size:23px}
+    .hero{min-height:100vh;display:grid;place-items:center;padding:140px 0 80px;position:relative}
+    .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:55px 55px;mask-image:linear-gradient(to bottom,black,transparent 78%);pointer-events:none}
+    .hero-content{position:relative;max-width:900px;text-align:center}
+    .pill{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.045);padding:8px 13px;border-radius:999px;color:#c9cbd4;font-size:13px;margin-bottom:25px}
+    .dot{width:7px;height:7px;background:#34d399;border-radius:50%;box-shadow:0 0 15px #34d399}
+    h1{font-size:clamp(56px,10vw,116px);line-height:.88;letter-spacing:-.075em;font-weight:950}
+    .gradient{background:linear-gradient(100deg,#fff 15%,#c4b5fd 45%,#67e8f9 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:700px;margin:27px auto;color:var(--muted);font-size:clamp(16px,2vw,20px)}
+    .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border-radius:14px;border:1px solid var(--line);font-weight:750;font-size:14px;transition:.25s}
+    .btn.primary{background:#fff;color:#09090b;border-color:#fff}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+    .btn.ghost{background:rgba(255,255,255,.045)}
+    section{padding:105px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:35px}
+    .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8e93a3;font-weight:800;margin-bottom:9px}
+    h2{font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.055em}
+    .section-head p{max-width:420px;color:var(--muted)}
+    .about{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+    .card{background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:inset 0 1px rgba(255,255,255,.04)}
+    .about .card p{color:#b7bac5;font-size:17px}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .stat{padding:22px;border:1px solid var(--line);border-radius:19px;background:rgba(255,255,255,.025)}
+    .stat strong{font-size:30px;display:block}.stat span{font-size:12px;color:var(--muted)}
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{min-height:300px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .project:before{content:"";position:absolute;width:180px;height:180px;right:-80px;top:-80px;border-radius:50%;background:var(--glow);filter:blur(10px)}
+    .num{color:#777b89;font-size:12px}.project h3{font-size:25px;letter-spacing:-.035em;margin:16px 0 8px}.project p{color:var(--muted);font-size:14px}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.tag{font-size:11px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.06);color:#c9cad2}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}.skill{padding:11px 15px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.035);color:#cdd0d9;font-size:14px}
+    .timeline{display:grid;gap:14px}.item{display:grid;grid-template-columns:145px 1fr;gap:20px;padding:23px 0;border-bottom:1px solid var(--line)}
+    .item time{color:#858997;font-size:13px}.item h3{font-size:18px}.item p{color:var(--muted);font-size:14px;margin-top:4px}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}.contact-card{min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+    .contact-card h3{font-size:30px;letter-spacing:-.04em}.contact-card p{color:var(--muted)}
+    .contact-link{font-size:17px;font-weight:750;color:#d7d1ff}
+    footer{border-top:1px solid var(--line);padding:28px 0 42px;color:#777b88;font-size:13px;display:flex;justify-content:space-between;gap:20px}
+    .reveal{opacity:0;transform:translateY(25px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+    .cursor{display:inline-block;width:8px;height:1em;background:#a78bfa;margin-left:7px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+    @keyframes blink{50%{opacity:0}}
+    @media(max-width:850px){
+      .navlinks{display:none}.menu{display:block}.nav.open .navlinks{display:flex;position:absolute;top:58px;left:0;right:0;flex-direction:column;padding:10px;background:#111217;border:1px solid var(--line);border-radius:15px}
+      .about,.contact{grid-template-columns:1fr}.projects{grid-template-columns:1fr 1fr}.section-head{display:block}.section-head p{margin-top:14px}.item{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){.container{width:min(var(--max),calc(100% - 26px))}.hero{padding-top:125px}.projects{grid-template-columns:1fr}.card{padding:22px}.stats{grid-template-columns:1fr 1fr}footer{display:block}footer span{display:block;margin-top:7px}}
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a class="logo" href="#top">the<span>sawan</span>.tech</a>
+    <div class="navlinks">
+      <a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </div>
+    <button class="menu" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="grid"></div>
+      <div class="hero-content reveal">
+        <div class="pill"><span class="dot"></span> Building ideas into reality</div>
+        <h1>Hi, I'm<br><span class="gradient">Sawan Kumar.</span></h1>
+        <p>I build at the intersection of <b>AI, data and software</b> — turning ambitious ideas into useful digital experiences.</p>
+        <div class="actions">
+          <a class="btn primary" href="#work">Explore my work ↗</a>
+          <a class="btn ghost" href="#contact">Let's connect</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container reveal">
+        <div class="section-head"><div><div class="eyebrow"></div><h2>Curious by nature.<br>Builder by choice.</h2></div>
+          <p>Computer Science & Data Science student focused on learning fast, shipping projects and solving real problems.</p></div>
+        <div class="about">
+          <div class="card"><p>I’m a CSE (Data Science) student at R.R.S.D.C.E., while also pursuing the BS in Data Science & Applications from IIT Madras. I enjoy AI/ML, full-stack development, experimentation and hackathons.</p></div>
+          <div class="stats">
+            <div class="stat"><strong>AI/ML</strong><span>Core interest</span></div>
+            <div class="stat"><strong>Full Stack</strong><span>Build & deploy</span></div>
+            <div class="stat"><strong>SIH'25</strong><span>Finalist</span></div>
+            <div class="stat"><strong>Hackathon</strong><span>Smart Bihar '24 finalist</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container reveal">
+        <div class="section-head"><div><div class="eyebrow"></div><h2>Things I've built.</h2></div><p>A few directions I'm exploring across web, AI, data and connected experiences.</p></div>
+        <div class="projects">
+          <article class="card project"><div><span class="num">01 / PRODUCT</span><h3>Personal OS</h3><p>A personal digital hub designed around an NFC card — identity, links, projects and useful actions in one place.</p></div><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">NFC</span></div></article>
+          <article class="card project"><div><span class="num">02 / PLATFORM</span><h3>RRSDCE Portal</h3><p>A modern student portal concept with dashboard, attendance, results, subjects, profile and admin-style UX.</p></div><div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">MERN</span></div></article>
+          <article class="card project"><div><span class="num">03 / EXPLORATION</span><h3>Algorithm Lab</h3><p>Interactive visual learning experiences for algorithms such as Quick Sort and Booth Multiplication.</p></div><div class="tags"><span class="tag">Algorithms</span><span class="tag">Visualization</span><span class="tag">JavaScript</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-head"><div><div class="eyebrow"></div><h2>What I work with.</h2></div></div>
+        <div class="card skills">
+          <span class="skill">Python</span><span class="skill">C / C++</span><span class="skill">Java</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Node.js</span><span class="skill">PHP</span><span class="skill">TensorFlow</span><span class="skill">PyTorch</span><span class="skill">Scikit-Learn</span><span class="skill">OpenCV</span><span class="skill">Hugging Face</span><span class="skill">Pandas</span><span class="skill">NumPy</span><span class="skill">SQL</span><span class="skill">MongoDB</span><span class="skill">PostgreSQL</span><span class="skill">Docker</span><span class="skill">FastAPI</span><span class="skill">Flask</span><span class="skill">Git</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container reveal">
+        <div class="section-head"><div><div class="eyebrow"></div><h2>Learning in public.</h2></div></div>
+        <div class="timeline">
+          <div class="item"><time>2025 → now</time><div><h3>B.Tech — CSE (Data Science)</h3><p>R.R.S.D.C.E., Begusarai, Bihar</p></div></div>
+          <div class="item"><time>2025 → now</time><div><h3>BS — Data Science & Applications</h3><p>IIT Madras</p></div></div>
+          <div class="item"><time>2025</time><div><h3>Smart India Hackathon — Finalist</h3><p>National-level innovation and problem solving.</p></div></div>
+          <div class="item"><time>2024</time><div><h3>Smart Bihar Hackathon — Finalist</h3><p>Built and presented technology-driven solutions.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container reveal">
+        <div class="section-head"><div><div class="eyebrow"></div><h2>Have an idea?<br>Let's build it.</h2></div></div>
+        <div class="contact">
+          <div class="card contact-card"><div><h3>Say hello.</h3><p>Open to projects, collaborations, hackathons and interesting conversations.</p></div><a class="contact-link" href="mailto:hello@thesawan.tech">hello@thesawan.tech ↗</a></div>
+          <div class="card contact-card"><div><h3>Find me online.</h3><p>Happy to Connect!.</p></div><div class="actions" style="justify-content:flex-start;margin:0"><a class="btn ghost" href="https://github.com/Sawanmahna" onclick="return false">GitHub</a><a class="btn ghost" href="https://linkedin.com/in/sawanmahna" onclick="return false">LinkedIn</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <span>© <span id="year"></span> thesawan.tech</span>
+    <span>Designed & built with curiosity.</span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const obs = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('show')), {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.navlinks a').forEach(a => a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+  </script>
+</body>
+</html>
